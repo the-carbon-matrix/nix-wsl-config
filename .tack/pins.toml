@@ -1,0 +1,8 @@
+[inputs.nixpkgs]
+url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.xz"
+
+[inputs.nixos-wsl]
+url = "github:nix-community/NixOS-WSL/release-26.05"
+
+[inputs.home-manager]
+url = "github:nix-community/home-manager/release-26.05"

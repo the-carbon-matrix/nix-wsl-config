@@ -1,8 +1,17 @@
+[shorturls]
+gh = "github:{path}"
+
 [inputs.nixpkgs]
 url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.xz"
+type = "fetch"
 
 [inputs.nixos-wsl]
-url = "github:nix-community/NixOS-WSL/release-26.05"
+url = "gh:nix-community/NixOS-WSL/release-26.05"
+type = "flake"
 
 [inputs.home-manager]
-url = "github:nix-community/home-manager/release-26.05"
+url = "gh:nix-community/home-manager/release-26.05"
+type = "fetch"
+
+[inputs.tack]
+url = "gh:manic-systems/tack"

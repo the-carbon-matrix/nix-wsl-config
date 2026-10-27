@@ -1,45 +1,26 @@
 {
   pkgs,
   sources,
+  baseVars,
   ...
-}: let
-  username = "carbon";
-in {
+}: {
   imports = [
     "${sources.home-manager}/nixos"
     ./docker.nix
+    ./nix.nix
   ];
 
   wsl.enable = true;
-  wsl.defaultUser = username;
-
-  programs.nix-ld.enable = true;
-  programs.tack.enable = true;
-
-  nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-  };
-  environment.sessionVariables = {
-    "NH_FILE" = "/home/${username}/.config/nixos/system.nix";
-  };
-
+  wsl.defaultUser = baseVars.username;
   programs.fish.enable = true;
 
-  users.users.${username} = {
+  users.users.${baseVars.username} = {
     isNormalUser = true;
     shell = pkgs.fish;
   };
-  home-manager.useGlobalPkgs = true;
-  home-manager.users.${username} = import ../home-manager/home.nix;
 
-  environment.systemPackages = with pkgs; [
-    helix
-    nixd
-    alejandra
-  ];
+  home-manager.useGlobalPkgs = true;
+  home-manager.users.${baseVars.username} = import ../home-manager/home.nix;
 
   system.stateVersion = "26.05"; # DO NOT EDIT
 }

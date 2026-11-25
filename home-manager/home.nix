@@ -3,7 +3,9 @@
     ./helix.nix
   ];
 
-  home.packages = [];
+  home.packages = with pkgs; [
+    fastfetch
+  ];
   programs.fish = {
     enable = true;
     shellAliases = {
